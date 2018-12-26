@@ -798,7 +798,8 @@ src/Frame.o: ../src/Frame.cpp ../src/Frame.h \
   /usr/local/include/websocketpp/processors/hybi13.hpp \
   /usr/local/include/websocketpp/sha1/sha1.hpp \
   /usr/local/include/websocketpp/version.hpp \
-  /usr/local/include/websocketpp/impl/endpoint_impl.hpp
+  /usr/local/include/websocketpp/impl/endpoint_impl.hpp \
+  ../src/NetException.h
 
 ../src/Frame.h:
 
@@ -2401,3 +2402,5 @@ src/Frame.o: ../src/Frame.cpp ../src/Frame.h \
 /usr/local/include/websocketpp/version.hpp:
 
 /usr/local/include/websocketpp/impl/endpoint_impl.hpp:
+
+../src/NetException.h:

@@ -6,15 +6,9 @@
  */
 #include <stdexcept>
 #include "Frame.h"
+#include "NetException.h"
 
 Frame::Frame(std::string frame_line) {
-//	map<string, string> heads;
-//	_heads = &heads;
-//	map<string, string> parameters;
-//	_parameters = &parameters;
-//	string content;
-//	_content = &content;
-
 	string fline = frame_line;
 	while (startWith(fline, " ")) {
 		fline = fline.substr(1, fline.length());
@@ -36,14 +30,14 @@ Frame::Frame(std::string frame_line) {
 	}
 
 	if (!startWith(remain, "/")) {
-		throw 2; //侦格式错误：没有url或，url不是以/开头
+		throw NetException("侦格式错误：没有url或，url不是以/开头"); //侦格式错误：没有url或，url不是以/开头
 	}
 	pos = remain.find(' ');
 	if (pos < 0) {
-		throw 3; //侦格式错误：缺少协议或url
+		throw NetException("侦格式错误：缺少协议或url"); //侦格式错误：缺少协议或url
 	}
 	if (remain.length() <= 0) {
-		throw 4; //侦格式错误：缺少协议
+		throw NetException("侦格式错误：缺少协议");//侦格式错误：缺少协议
 	}
 	url = remain.substr(0, pos);
 	remain = remain.substr(pos, remain.length() - url.length());
@@ -156,9 +150,9 @@ Frame::Frame(websocketpp::config::asio_client::message_type::ptr msg) {
 					break;
 				}
 				}
-			} catch (int) {
+			} catch (...) {
 				cout << "解析侦时出错" << endl;
-				throw 6;
+				throw NetException("解析侦时出错");
 			}
 			down += 2;
 			up = down;

@@ -5,14 +5,17 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/Frame.cpp \
+../src/NetException.cpp \
 ../src/test.cpp 
 
 OBJS += \
 ./src/Frame.o \
+./src/NetException.o \
 ./src/test.o 
 
 CPP_DEPS += \
 ./src/Frame.d \
+./src/NetException.d \
 ./src/test.d 
 
 
